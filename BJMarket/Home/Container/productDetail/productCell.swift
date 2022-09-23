@@ -35,5 +35,4 @@ class productCell: UICollectionViewCell {
         mImgView?.layer.cornerRadius = 6
         mImgView?.layer.masksToBounds = true
     }
-
 }

@@ -8,7 +8,18 @@
 import UIKit
 
 class reviewCell: UITableViewCell {
+    
+    static let identifier = "reviewCell"
+    
+    static func nib()-> UINib{
+         return UINib(nibName: "reviewCell", bundle: nil)
+     }
 
+    @IBOutlet weak var rate: UILabel!
+    @IBOutlet weak var reviewText: UITextView!
+    @IBOutlet weak var userID: UILabel!
+    @IBOutlet weak var when: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
