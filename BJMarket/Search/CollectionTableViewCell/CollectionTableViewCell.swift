@@ -9,6 +9,8 @@ import UIKit
 
 class CollectionTableViewCell: UITableViewCell {
     
+    let sword :[String] = ["플레이모빌","디터람스","스티키몬스터랩","스탠리런치박스","캠핑카","캠핑의자","여행용","알람시계"]
+    
     static let cellId = "CollectionTableViewCell"
     static let className = "CollectionTableViewCell"
     
@@ -17,8 +19,6 @@ class CollectionTableViewCell: UITableViewCell {
     var model = [String]()
     
     func configure(){
-        //        with model: [Model]
-        //        self.model = models
         collectionView.reloadData()
     }
     override func awakeFromNib() {
@@ -38,13 +38,14 @@ class CollectionTableViewCell: UITableViewCell {
 
 extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return sword.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: My1CollectionViewCell.cellId, for: indexPath) as! My1CollectionViewCell
-        cell.configure()
-        //        cell.configure(with: model[indexPath.row])
+        cell.myLabel.text = sword[indexPath.row]
+        //cell.configure()
+        //cell.configure(with: model[indexPath.row])
         return cell
     }
     

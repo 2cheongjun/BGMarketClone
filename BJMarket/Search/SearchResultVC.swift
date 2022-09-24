@@ -1,31 +1,31 @@
-
-//  searchVC.swift
+//
+//  SearchResultVC.swift
 //  BJMarket
 //
-//  Created by 이청준 on 2022/09/16.
+//  Created by 이청준 on 2022/09/24.
 //
 
 import Foundation
 import UIKit
-import SnapKit
-import Then
 
-class searchVC :UIViewController{
-    
-    
-    let tag: [String] = ["같이해요","동네질문","동네맛집","동네소식","취미생활","실시간동네날씨","분실/실종센터"]
+class SearchResultVC : UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textField: UITextField!
     
-    
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         
         tableView.delegate = self
         tableView.dataSource = self
 
-        tableView.register(UINib(nibName: CollectionTableViewCell.className, bundle: nil), forCellReuseIdentifier: CollectionTableViewCell.cellId)
+        tableView.register(UINib(nibName: TableViewCellFirst.className, bundle: nil), forCellReuseIdentifier: TableViewCellFirst.cellId)
         
         tableView.register(UINib(nibName: Collection2TableViewCell.className, bundle: nil), forCellReuseIdentifier: Collection2TableViewCell.cellId)
+        
+        //검색창에 입력한내용(최근검색어내용저장해서 word모델에 담기)-> CollectionTableViewCell에서 넣기
+        let text = textField.text
+        print(text!)
 
     }
     
@@ -36,7 +36,8 @@ class searchVC :UIViewController{
 }
 
 
-extension searchVC : UITableViewDelegate,
+
+extension SearchResultVC : UITableViewDelegate,
                           UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -45,14 +46,15 @@ extension searchVC : UITableViewDelegate,
     UITableViewCell {
         switch indexPath.row{
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.cellId, for: indexPath) as! CollectionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellFirst.cellId, for: indexPath) as! TableViewCellFirst
             cell.configure()
 
             return cell
         case 1:
             let cell =
             tableView.dequeueReusableCell(withIdentifier: Collection2TableViewCell.cellId, for: indexPath) as! Collection2TableViewCell
-            //        cell.configure()
+            // 최근검색어 가져와 뿌리기
+//             cell.configure()
             
             return cell
         default:

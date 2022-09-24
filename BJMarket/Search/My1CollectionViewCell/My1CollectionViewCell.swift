@@ -24,12 +24,4 @@ class My1CollectionViewCell: UICollectionViewCell {
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor =  UIColor.systemGray5.cgColor
     }
-    
-    
-    // data model 넣으면 됨
-    public func configure() {
-        myLabel.text = "캠핑용품"
-//        myImageView.tintColor = .blue
-    }
-
 }

@@ -21,17 +21,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="81" height="41"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dF4-Np-1XP">
-                                <rect key="frame" x="8" y="12" width="36" height="17"/>
+                                <rect key="frame" x="8" y="12" width="39.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCD-om-SzT">
-                                <rect key="frame" x="49" y="5" width="28" height="31"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="delete.left" catalog="system"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKj-BD-Adp">
                                 <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
                                 <constraints>
@@ -40,19 +34,29 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCD-om-SzT">
+                                <rect key="frame" x="57" y="14" width="12" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="Km7-AD-GD0"/>
+                                    <constraint firstAttribute="width" constant="12" id="Slj-67-SIw"/>
+                                    <constraint firstAttribute="width" secondItem="mCD-om-SzT" secondAttribute="height" multiplier="1:1" id="zwu-UR-MLM"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="s_xbtn"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="mCD-om-SzT" secondAttribute="bottom" constant="5" id="6bI-lG-02h"/>
                             <constraint firstAttribute="height" constant="41" id="9zy-KO-Pus"/>
-                            <constraint firstItem="mCD-om-SzT" firstAttribute="leading" secondItem="dF4-Np-1XP" secondAttribute="trailing" constant="5" id="TaV-N4-T9j"/>
-                            <constraint firstAttribute="trailing" secondItem="mCD-om-SzT" secondAttribute="trailing" constant="4" id="Uw5-WG-7kM"/>
-                            <constraint firstItem="mCD-om-SzT" firstAttribute="top" secondItem="6IB-ry-uuP" secondAttribute="top" constant="5" id="Zke-zN-4nB"/>
+                            <constraint firstItem="mCD-om-SzT" firstAttribute="leading" secondItem="dF4-Np-1XP" secondAttribute="trailing" constant="9.5" id="Wcs-SM-me3"/>
                             <constraint firstItem="OKj-BD-Adp" firstAttribute="top" secondItem="6IB-ry-uuP" secondAttribute="top" id="gZi-CZ-EON"/>
                             <constraint firstAttribute="bottom" secondItem="dF4-Np-1XP" secondAttribute="bottom" constant="12" id="iBR-Lv-wg8"/>
                             <constraint firstItem="OKj-BD-Adp" firstAttribute="leading" secondItem="6IB-ry-uuP" secondAttribute="leading" id="iur-nU-8Cj"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="ldw-sq-k8w"/>
+                            <constraint firstAttribute="trailing" secondItem="mCD-om-SzT" secondAttribute="trailing" constant="12" id="m7v-ro-LWx"/>
                             <constraint firstItem="dF4-Np-1XP" firstAttribute="top" secondItem="6IB-ry-uuP" secondAttribute="top" constant="12" id="oIT-Pg-VeH"/>
+                            <constraint firstItem="mCD-om-SzT" firstAttribute="centerY" secondItem="OKj-BD-Adp" secondAttribute="centerY" id="uXY-dU-4o0"/>
                             <constraint firstItem="dF4-Np-1XP" firstAttribute="leading" secondItem="6IB-ry-uuP" secondAttribute="leading" constant="8" id="x5q-7P-dWL"/>
                         </constraints>
                     </view>
@@ -75,6 +79,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="delete.left" catalog="system" width="128" height="104"/>
+        <image name="s_xbtn" width="20" height="20"/>
     </resources>
 </document>
