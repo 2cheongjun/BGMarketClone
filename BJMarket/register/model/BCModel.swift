@@ -9,15 +9,15 @@
 import Foundation
 
 // MARK: - BCategoryModel
-struct BModel: Codable {
+struct BCModel: Codable {
     let isSuccess: Bool?
     let code: Int?
     let message: String?
-    let bresult: [BResult]
+    let result: [BCResult]
 }
 
 // MARK: - Result
-struct BResult: Codable {
+struct BCResult: Codable {
     let largeCategoryID: Int?
     let largeCategoryName: String?
 
