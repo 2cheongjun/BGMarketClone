@@ -24,7 +24,7 @@ class My2CollectionViewCell: UICollectionViewCell {
         contentView.layer.borderColor =  UIColor.systemGray5.cgColor
     }
     public func configure() {
-        titleLbl.text = "최근검색어"
+//        titleLbl.text = ""
 //        imageView.tintColor = .blue
     }
 

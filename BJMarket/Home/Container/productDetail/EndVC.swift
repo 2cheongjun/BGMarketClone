@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import UIKit
+
+class EndVC :UIViewController{
+    
+    
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+}

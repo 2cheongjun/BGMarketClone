@@ -7,26 +7,24 @@
 
 import Foundation
 
-// MARK: - MyModel
-struct MyModel: Codable {
-    let isSuccess: Bool
-    let code: Int
-    let message: String
-    let result: [MYResult]
+// MARK: - NewModel
+struct NewModel: Codable {
+    let isSuccess: Bool?
+    let code: Int?
+    let message: String?
+    let result: [NewResult]
 }
 
 // MARK: - Result
-struct MYResult: Codable {
-    let postID: Int?
-    let price: Int?
+struct NewResult: Codable {
+    let postID, price: Int?
     let title, content: String?
     let safepay: Int?
     let imgURL: String?
-    
-    enum CodingKeys: String,CodingKey {
+
+    enum CodingKeys: String, CodingKey {
         case postID = "post_id"
-        case price,title,content,safepay
+        case price, title, content, safepay
         case imgURL = "imgUrl"
     }
 }
-

@@ -13,7 +13,7 @@ class CategoryAPI{
     
     // 모델가져오기
     var pModel: PModel?
-    var pResult: PResult?
+//    var pResult: PResult?
     
     func getTest() {
         let url = "https://dev.wogus4048.shop/app/post/category?LCId=1"

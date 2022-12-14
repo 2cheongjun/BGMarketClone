@@ -28,23 +28,34 @@
                                     <constraint firstAttribute="height" constant="380" id="oyV-5a-kSl"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEZ-Zv-77z">
-                                <rect key="frame" x="336" y="329" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7O-hr-d3M">
+                                <rect key="frame" x="345" y="316" width="50" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEZ-Zv-77z">
+                                        <rect key="frame" x="8" y="8" width="35.5" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="f7m-ov-4it"/>
+                                    <constraint firstAttribute="width" constant="50" id="fxd-Y0-f5M"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BDL-Vq-02G" firstAttribute="leading" secondItem="2HS-YT-IAP" secondAttribute="leading" id="34o-pe-vA1"/>
-                            <constraint firstAttribute="bottom" secondItem="bEZ-Zv-77z" secondAttribute="bottom" constant="30" id="8jO-KA-SNt"/>
+                            <constraint firstAttribute="bottom" secondItem="I7O-hr-d3M" secondAttribute="bottom" constant="30" id="7j2-F4-dlC"/>
                             <constraint firstItem="BDL-Vq-02G" firstAttribute="top" secondItem="2HS-YT-IAP" secondAttribute="top" id="C7f-8b-Zld"/>
                             <constraint firstItem="BDL-Vq-02G" firstAttribute="leading" secondItem="2HS-YT-IAP" secondAttribute="leading" id="LbJ-CK-07n"/>
                             <constraint firstItem="BDL-Vq-02G" firstAttribute="top" secondItem="2HS-YT-IAP" secondAttribute="top" id="WUG-Tv-BQH"/>
+                            <constraint firstAttribute="trailing" secondItem="I7O-hr-d3M" secondAttribute="trailing" constant="13" id="e6b-1Q-FMU"/>
                             <constraint firstAttribute="bottom" secondItem="BDL-Vq-02G" secondAttribute="bottom" id="fy5-fp-4NW"/>
                             <constraint firstAttribute="trailing" secondItem="BDL-Vq-02G" secondAttribute="trailing" id="lJ8-lh-df2"/>
-                            <constraint firstAttribute="trailing" secondItem="bEZ-Zv-77z" secondAttribute="trailing" constant="30" id="pq4-GJ-Am5"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -58,6 +69,7 @@
             </constraints>
             <size key="customSize" width="408" height="380"/>
             <connections>
+                <outlet property="bg" destination="I7O-hr-d3M" id="v13-B2-411"/>
                 <outlet property="imageView" destination="BDL-Vq-02G" id="Mff-iY-rfH"/>
                 <outlet property="label" destination="bEZ-Zv-77z" id="lav-i2-dxk"/>
             </connections>
@@ -66,6 +78,9 @@
     </objects>
     <resources>
         <image name="01" width="828" height="662"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -8,22 +8,23 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-
-    static let identifier = "CollectionViewCell"
-
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var bg: UIView!
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+    static let identifier = "CollectionViewCell"
     
     static func nib()-> UINib{
         return UINib(nibName: "CollectionViewCell", bundle: nil)
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        bg.layer.cornerRadius = 6
+    }
+
+
 
 }

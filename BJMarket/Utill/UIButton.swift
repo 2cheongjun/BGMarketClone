@@ -19,11 +19,11 @@ extension UIButton {
 //
     func optionSelected() {
         self.backgroundColor = UIColor(red: 255/255, green: 238/255, blue: 240/255, alpha: 1.0)
-//        self.backgroundColor = UIColor.systemRed
+        self.backgroundColor = UIColor.systemRed
         self.setTitleColor(.red, for: .normal)
         self.layer.borderWidth = 0
         self.layer.cornerRadius = 6
-//        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderColor = UIColor.white.cgColor
     }
 
     func optionDeselected() {

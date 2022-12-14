@@ -8,6 +8,8 @@
 import UIKit
 
 class Collection2TableViewCell: UITableViewCell {
+    
+    let word :[String] = ["01 짱구키링","02 아미 가디건","03 버거킹","04 투티에","05 샤이니","06 도미노","07 pdf","08 국대","09 슈퍼주니어","10 cu"]
 
     @IBOutlet var collectionView: UICollectionView!
     
@@ -31,13 +33,14 @@ class Collection2TableViewCell: UITableViewCell {
 
 extension Collection2TableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return word.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: My2CollectionViewCell.cellId, for: indexPath) as! My2CollectionViewCell
-        cell.configure()
+            cell.titleLbl.text = word[indexPath.row]
+        
         //        cell.configure(with: model[indexPath.row])
         return cell
         

@@ -8,6 +8,6 @@
 import Foundation
 import UIKit
 
-class legoVC: UIViewController{
+class CategoryVC: UIViewController{
     
 }

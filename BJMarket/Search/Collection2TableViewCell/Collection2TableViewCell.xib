@@ -21,17 +21,17 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRE-U5-cwK">
                         <rect key="frame" x="0.0" y="0.0" width="378" height="122"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근검색어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNP-hF-HZA">
-                                <rect key="frame" x="20" y="20" width="95.5" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요즘 많이 찾는 검색어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNP-hF-HZA">
+                                <rect key="frame" x="20" y="20" width="185.5" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yrV-jp-xcc">
-                                <rect key="frame" x="20" y="52" width="338" height="70"/>
+                                <rect key="frame" x="20" y="52" width="358" height="70"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="338" id="Mp5-OE-Xmw"/>
+                                    <constraint firstAttribute="width" constant="358" id="Mp5-OE-Xmw"/>
                                     <constraint firstAttribute="height" constant="70" id="Yxy-u0-HIn"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="laO-Cz-Eef">
@@ -54,7 +54,7 @@
                             <constraint firstItem="gNP-hF-HZA" firstAttribute="leading" secondItem="rRE-U5-cwK" secondAttribute="leading" constant="20" id="bKF-CL-Z8E"/>
                             <constraint firstAttribute="height" constant="122" id="eht-3z-aGR"/>
                             <constraint firstAttribute="width" constant="378" id="fch-Gx-F2w"/>
-                            <constraint firstAttribute="trailing" secondItem="yrV-jp-xcc" secondAttribute="trailing" constant="20" symbolic="YES" id="pvo-o0-WJl"/>
+                            <constraint firstAttribute="trailing" secondItem="yrV-jp-xcc" secondAttribute="trailing" id="pvo-o0-WJl"/>
                             <constraint firstItem="yrV-jp-xcc" firstAttribute="top" secondItem="gNP-hF-HZA" secondAttribute="bottom" constant="10" id="qEi-jh-e3o"/>
                         </constraints>
                     </view>
@@ -70,7 +70,7 @@
             <connections>
                 <outlet property="collectionView" destination="yrV-jp-xcc" id="pyJ-1w-5hi"/>
             </connections>
-            <point key="canvasLocation" x="155" y="0.0"/>
+            <point key="canvasLocation" x="153.62318840579712" y="-0.33482142857142855"/>
         </tableViewCell>
     </objects>
     <resources>

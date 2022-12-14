@@ -8,7 +8,16 @@
 import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
+    
+    static let identifier = "CategoryTableViewCell"
+    
+    static func nib()-> UINib{
+            return UINib(nibName: "CategoryTableViewCell", bundle: nil)
+        }
 
+    @IBOutlet weak var label: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

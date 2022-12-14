@@ -9,7 +9,7 @@ import UIKit
 
 class CollectionTableViewCell: UITableViewCell {
     
-    let sword :[String] = ["플레이모빌","디터람스","스티키몬스터랩","스탠리런치박스","캠핑카","캠핑의자","여행용","알람시계"]
+    let sword :[String] = ["패딩","패딩조끼","캠핑","스탠리런치박스","캠핑카","캠핑의자","여행용","알람시계"]
     
     static let cellId = "CollectionTableViewCell"
     static let className = "CollectionTableViewCell"
@@ -21,7 +21,9 @@ class CollectionTableViewCell: UITableViewCell {
     func configure(){
         collectionView.reloadData()
     }
+    
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         
         collectionView.register(UINib(nibName: My1CollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier : My1CollectionViewCell.cellId)

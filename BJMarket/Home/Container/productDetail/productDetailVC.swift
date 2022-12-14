@@ -8,11 +8,20 @@
 import Foundation
 import UIKit
 import FloatingPanel
+import Alamofire
 
 class productDetailVC :UIViewController,UIScrollViewDelegate{
     
     var fpc: FloatingPanelController!
     var contentsVC: ContentsVC! // 띄울 VC
+    //작성글데이터
+    var resiterDetailModel:ResiterDetailModel?
+    var registerDetailModelResult :ResiterDetailModelResult?
+    //테이블뷰셀내상점데이터
+    var newModel : NewModel?
+    let plist = UserDefaults.standard
+    let review :[String] = ["발송도 빨리해주시고 포장도 엄청 꼼꼼하게 잘보내주셨어요.친절하고 좋은판매자입니다.","다시 거래하고싶은 상점1위"]
+    let tmpId:[String] = ["중고거래중독자","캠핑매니아"]
     
     //상단이미지
     @IBOutlet weak var scrollView: UIScrollView!
@@ -26,10 +35,11 @@ class productDetailVC :UIViewController,UIScrollViewDelegate{
     @IBOutlet weak var productTitle: UILabel!
     @IBOutlet weak var productPlace: UILabel!
     @IBOutlet weak var prductTime: UILabel!
-    //배너테두리넣기
-    @IBOutlet weak var banner: UIButton!
     //제품설명
     @IBOutlet weak var productDescription: UITextView!
+    //배너테두리넣기
+    @IBOutlet weak var banner: UIButton!
+
     //이상점의 상품(테이블뷰)
     @IBOutlet weak var collectionView2: UICollectionView!
     //작성자
@@ -42,18 +52,23 @@ class productDetailVC :UIViewController,UIScrollViewDelegate{
     @IBOutlet weak var reviewAllBtn: UIButton!
     @IBOutlet weak var scrollViewAll: UIScrollView!
     //닫기
+  
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     //탑버튼
     @IBOutlet weak var topBtn: UIButton!
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var flowBtn: UIButton!
+    @IBOutlet weak var talkBtn: UIButton!
+    @IBOutlet weak var safeBtn: UIButton!
     
     // MARK: - viewdidload
     override func viewDidLoad() {
-        models.append(Model(text: "1", imageName:"02"))
-        models.append(Model(text: "2", imageName:"01"))
-        models.append(Model(text: "3", imageName:"04"))
-        models.append(Model(text: "4", imageName:"03"))
+        models.append(Model(text: "67,000원", imageName:"05" ,dec:"멋쟁이 후드티팝니다."))
+        models.append(Model(text: "328,000원", imageName:"06" ,dec:"콜맨캠핑의자세트,미개봉상품"))
+        models.append(Model(text: "50,000원", imageName:"07" ,dec:"나이키트레이닝복"))
+        models.append(Model(text: "4", imageName:"03",dec:""))
         
         //상단스크롤이미지
         scrollView.delegate = self
@@ -77,8 +92,22 @@ class productDetailVC :UIViewController,UIScrollViewDelegate{
         topBtn.layer.shadowOpacity = 0.2
         topBtn.layer.shadowRadius = 2
         
+        //배너테두리
+        banner.layer.borderColor = UIColor.systemGray6.cgColor
+        banner.layer.borderWidth = 1
+        
+        //
+        flowBtn.layer.cornerRadius = 6
+        talkBtn.layer.cornerRadius = 6
+        safeBtn.layer.cornerRadius = 6
+        //나의판매중상품조회:staus1
+        registerDetailAPI()
+        
     }
     
+    
+    
+
     // MARK: - 이미지스크롤
     private func addContentScrollView() {
            for i in 0..<images.count {
@@ -124,11 +153,96 @@ class productDetailVC :UIViewController,UIScrollViewDelegate{
         fpc.changePanelStyle() // panel 스타일 변경 (대신 bar UI가 사라지므로 따로 넣어주어야함)
         fpc.delegate = self
         fpc.set(contentViewController: contentsVC) // floating panel에 삽입할 것
-        fpc.track(scrollView: contentsVC.tbl)
+//        fpc.track(scrollView: contentsVC.tbl)
         fpc.addPanel(toParent: self) // fpc를 관리하는 UIViewController
         fpc.layout = MyFloatingPanelLayout()
         fpc.invalidateLayout() // if needed
     }
+    
+    
+    func registerDetailAPI() {
+        var pdNum = 1
+        
+        let url = "https://dev.wogus4048.shop/app/post/\(pdNum)"
+        print("유알엘:\(url)")
+        //LCId=&MCId=&SCId=
+        AF.request(url,
+                   method: .get,
+                   parameters: nil,
+                   encoding: URLEncoding.default,
+                   headers: ["Content-Type":"application/json", "Accept":"application/json"])
+        .validate(statusCode: 200..<300)
+        .responseJSON() { res in
+            switch res.result{
+            case .success(_):
+                
+                guard let jsonObject = try! res.result.get() as? [String :Any] else {
+                    print("올바른 응답값이 아닙니다.")
+                    return
+                }
+                
+                do{
+                    // Any를 JSON으로 변경
+                    let dataJSON = try JSONSerialization.data(withJSONObject:try! res.result.get(), options: .prettyPrinted)
+                    //                        print(dataJSON)
+                    // JSON디코더 사용
+                    self.resiterDetailModel = try JSONDecoder().decode(ResiterDetailModel.self, from: dataJSON)
+                    
+                    print(self.resiterDetailModel)
+                    
+                    OperationQueue.main.addOperation { [self] in // DispatchQueue도 가능.
+//
+                        self.productPlace.text = self.resiterDetailModel?.result?.region
+                        self.price.text = self.resiterDetailModel?.result?.price?.description
+                        self.productTitle.text = self.resiterDetailModel?.result?.title
+                        self.prductTime.text = self.resiterDetailModel?.result?.createdAt
+                        self.productDescription.text = self.resiterDetailModel?.result?.content
+                        
+                        // 킹피셔를 사용한 이미지 처리방법
+                          if let imageURL =  self.resiterDetailModel?.result?.imgUrls?[0] {
+                              // 이미지처리방법
+                              guard let url = URL(string: imageURL) else {
+                                  //리턴할 셀지정하기
+                                  return
+                              }
+                              // 이미지를 다운받는동안 인디케이터보여주기
+                              self.imgView.kf.indicatorType = .activity
+                              //            print("이미지url \(url)")
+                              self.imgView.kf.setImage(
+                                  with: url,
+                                  placeholder: UIImage(named: "placeholderImage"),
+                                  options: [
+                                      .scaleFactor(UIScreen.main.scale),
+                                      .transition(.fade(1)),
+                                      .cacheOriginalImage
+                                  ])
+                              {
+                                  result in
+                                  switch result {
+                                  case .success(let value):
+                                      print("")
+                                  case .failure(let err):
+                                      print(err.localizedDescription)
+                                  }
+                              }
+                          }
+    
+           
+                    }
+                    
+                    
+                }// 디코딩 에러잡기
+                catch {
+                    print("error: ", error)
+                }
+                
+                
+            case .failure(let error):
+                print("error: \(String(describing: error.errorDescription))")
+            }
+        }
+    }
+    
     
 }//클래스끝
 
@@ -175,7 +289,7 @@ class MyFloatingPanelLayout: FloatingPanelLayout {
     var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] { // 가능한 floating panel: 현재 full, half만 가능하게 설정
         return [
             .full: FloatingPanelLayoutAnchor(absoluteInset: 16.0, edge: .top, referenceGuide: .safeArea),
-            .half: FloatingPanelLayoutAnchor(absoluteInset: 292, edge: .bottom, referenceGuide: .safeArea),
+            .half: FloatingPanelLayoutAnchor(absoluteInset: 400, edge: .bottom, referenceGuide: .safeArea),
         ]
     }
 }
@@ -194,11 +308,10 @@ extension productDetailVC: UICollectionViewDelegate, UICollectionViewDataSource,
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: productCell.identifier, for: indexPath) as! productCell
 
-
-            //        cell.imageView.image =
-//        UIImage(named: models[indexPath.item].imageName)
-            cell.mImgView.image = UIImage(named: "01")
-            cell.pdTitle.text = "오일스프레이 고압스프레이새상품"
+        cell.mImgView.image = UIImage(named: models[indexPath.item].imageName)
+            cell.pdTitle.text = models[indexPath.item].dec
+            cell.price.text = models[indexPath.item].text
+            
             return cell
     }
 }
@@ -223,8 +336,8 @@ extension productDetailVC: UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as! reviewCell
 
         cell.rate.text = "5.0"
-//        cell.reviewText.text =""
-//        cell.userID.text =
+        cell.reviewText.text = review[indexPath.item]
+        cell.userID.text = tmpId[indexPath.item]
 //        cell.when.text =
 //            cell.mImgView.image =  UIImage(named: "01")
 //            cell.mImgView.image = UIImage(named: models[indexPath.item].imageName)

@@ -8,10 +8,12 @@ import Foundation
 struct Model{
     let text:String
     let imageName: String
+    let dec: String
     
-    init(text: String, imageName:String){
+    init(text: String, imageName:String, dec:String){
         self.text = text
         self.imageName = imageName
+        self.dec = dec
     }
 }
 
