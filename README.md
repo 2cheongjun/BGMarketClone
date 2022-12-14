@@ -12,6 +12,7 @@ https://bluedogs.tistory.com/manage/newpost/500?type=post&returnURL=https%3A%2F%
 (ubuntu 22.04.1, nginx 1.18.0, spring boot, mysql 8.0.3 )
 번개장터 클론코딩 시연영상 ( 번개장터 UI구현 + 서버API 연동 )
 https://youtu.be/EXSXRqSSIMY
+![스크린샷 2022-12-14 오후 6 38 11](https://user-images.githubusercontent.com/74134181/207560262-591b4d54-c2b6-4838-93ab-efe2a1968903.png)
 
 
 ▶ 번개장터 주요기능
