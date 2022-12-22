@@ -1,9 +1,6 @@
 # BGMarketClone
 번개장터 클론코딩 - iOS개발진행<br>
 
-▶ 블로그에서 자세히보기
-https://bluedogs.tistory.com/manage/newpost/500?type=post&returnURL=https%3A%2F%2Fbluedogs.tistory.com%2F500
-
 싹 라이징 프로그래머 - 번개장터 클론 프로젝트 
 기간	2022.0914 ~ 0927(2주)
 역할	iOS 100% 
@@ -100,11 +97,8 @@ tabbar의 미들버튼을 눌러 present하는 방법
 네비게이션 화면이동방식과 present방식
 pageController
 같은 방향의 스크롤뷰를 한화면에 넣어 중첩되는 것을 지양해야한다.(컬렉션뷰와 테이블뷰)
-생각해볼 점
 
-파일명을 짓는데 생각보다 어려움이 있었다. 나중에 찾기도 힘들고 코드컨벤션?에 대해 공부필요, 폴더링은 어떻게?
-Alamofire 멀티파트 업로드하는법 
-한화면에 collectionview를 두개 넣으면 델리게이트와 데이터 소스가 겹치는 데 어떻게해결?
+
 
 
 
